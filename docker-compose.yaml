@@ -1,0 +1,15 @@
+services:
+  todo-automation:
+    network_mode: "host"
+    build:
+      context: .
+      network: host
+    container_name: todo-automation
+    environment:
+      TZ: America/Vancouver
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    restart: always
+    command: ["python", "-u", "index.py"]
